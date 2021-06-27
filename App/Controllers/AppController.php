@@ -10,10 +10,7 @@
         public function timeline(){
             session_start();
             if($_SESSION['id'] != '' && $_SESSION['nome'] != ''){
-            echo 'chegamos aqui';
-            echo '<pre>';
-            print_r($_SESSION);
-            echo '</pre>';
+                $this->render('timeline');
 
             }else{
                 header('location: /?login=erro');
