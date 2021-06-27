@@ -36,11 +36,17 @@
 
 				
 			</div>
-			<div class="row">
+			<?php
+				if($this->view->login =='erro'){?>
+
+				<div class="row">
 				<div class="col">
 					<span class= "text-danger"> E-mail ou senha Inválidos</span>
 				</div>
-			</div>
+				</div>
+			<?php
+				}
+			?>
 		</form>
 
 		<div class="row pt-5 pl-5 pr-5">
