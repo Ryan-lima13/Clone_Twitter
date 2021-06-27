@@ -19,7 +19,7 @@ class AuthController extends Action{
         if($usuario->__get('id') != ""  && $usuario->__get('nome')){
             echo 'autenticado';
         }else{
-            echo 'erro na autenticaçaõ';
+            header('location: /?login=erro');
         }
         
 
