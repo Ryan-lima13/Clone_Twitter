@@ -8,40 +8,43 @@
     class AppController extends Action{
 
         public function timeline(){
-            session_start();
-            if($_SESSION['id'] != '' && $_SESSION['nome'] != ''){
-                // recuperar os tweets
-                $tweet = Container::getModel('Tweet');
-                $tweet->__set('id_usuario', $_SESSION['id'] );
-                $tweets = $tweet->getAll();
-                echo '<pre>';
-                print_r($tweets);
-                echo '</pre>';
-                $this->view->tweets = $tweets;
-                $this->render('timeline');
+            $this->ValidarAutenticacao();
+            // recuperar os tweets
+            $tweet = Container::getModel('Tweet');
+            $tweet->__set('id_usuario', $_SESSION['id'] );
+            $tweets = $tweet->getAll();
+                
+            $this->view->tweets = $tweets;
+            $this->render('timeline');
                 
 
-            }else{
-                header('location: /?login=erro');
-            }
+            
             
         }
         public function tweet(){
-            session_start();
-            if($_SESSION['id'] != '' && $_SESSION['nome'] != ''){
-                
-                $tweet = Container::getModel('Tweet');
-                $tweet->__set('tweet',$_POST['tweet']);
-                $tweet->__set('id_usuario',$_SESSION['id']);
-                $tweet->salvar();
+            
+            $this->ValidarAutenticacao(); 
+              
+            $tweet = Container::getModel('Tweet');
+            $tweet->__set('tweet',$_POST['tweet']);
+            $tweet->__set('id_usuario',$_SESSION['id']);
+            $tweet->salvar();
 
-                header('location:/timeline');
+            header('location:/timeline');
                
 
-            }else{
-                header('location: /?login=erro');
-            }
             
+            
+
+        }
+
+        public function ValidarAutenticacao(){
+            session_start();
+
+            if(!isset($_SESSION['id']) || $_SESSION['id'] == '' || !isset($_SESSION['nome']) || $_SESSION['nome'] == '') {
+                header('Location: /?login=erro');
+            }
+
 
         }
         
