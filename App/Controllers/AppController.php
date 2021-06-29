@@ -49,7 +49,24 @@
         }
         public function quemSeguir(){
             $this->ValidarAutenticacao(); 
-            echo 'chegamos aqui';
+            echo '<br><br><br>';
+            
+            $pesquisaPor = isset(($_GET['pesquisarPor'])) ? $_GET
+            ['pesquisarPor']:'';
+            
+            $usuarios = array();
+            if($pesquisaPor != ''){
+                $usuario = Container::getModel('Usuario');
+                $usuario->__set('nome',$pesquisaPor);
+                $usuarios = $usuario->getAll();
+                
+            }
+            $this->view->usuarios = $usuarios;
+
+            
+            
+            
+           $this->render('quemSeguir');
         }
         
             
