@@ -34,12 +34,15 @@
         public function getAll(){
             $query = "
                 select
-                     t.id,t.id_usuario,u.nome,t.tweet,data
-                 from 
+                     t.id,t.id_usuario,u.nome,t.tweet,t.data
+                from 
                     tweets as t 
                     left join usuarios as u on (t.id_usuario = u.id)
-                 where 
+                where 
                     t.id_usuario = :id_usuario
+                order by 
+                    t.data desc
+
             
             ";
             $stmt = $this->db->prepare($query);
