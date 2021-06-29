@@ -33,10 +33,17 @@
 
         public function getAll(){
             $query = "
-                select id,id_usuario,tweet,data from tweets
+                select
+                     t.id,t.id_usuario,u.nome,t.tweet,data
+                 from 
+                    tweets as t 
+                    left join usuarios as u on (t.id_usuario = u.id)
+                 where 
+                    t.id_usuario = :id_usuario
             
             ";
             $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id_usuario',$this->__get('id_usuario'));
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
