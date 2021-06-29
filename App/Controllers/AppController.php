@@ -10,7 +10,10 @@
         public function timeline(){
             session_start();
             if($_SESSION['id'] != '' && $_SESSION['nome'] != ''){
+                // recuperar os tweets
+                
                 $this->render('timeline');
+                
 
             }else{
                 header('location: /?login=erro');
@@ -25,6 +28,8 @@
                 $tweet->__set('tweet',$_POST['tweet']);
                 $tweet->__set('id_usuario',$_SESSION['id']);
                 $tweet->salvar();
+
+                header('location:/timeline');
                
 
             }else{
