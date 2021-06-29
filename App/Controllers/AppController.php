@@ -47,6 +47,10 @@
 
 
         }
+        public function quemSeguir(){
+            $this->ValidarAutenticacao(); 
+            echo 'chegamos aqui';
+        }
         
             
         
