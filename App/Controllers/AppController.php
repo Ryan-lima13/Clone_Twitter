@@ -17,21 +17,22 @@
             }
             
         }
-        public function tweetes(){
+        public function tweet(){
             session_start();
             if($_SESSION['id'] != '' && $_SESSION['nome'] != ''){
-               
-                $tweetes = Container::getModel('tweete');
-                $tweetes->__set('tweetes',$_POST['tweete']);
-                $tweetes->__set('id_usuario', $_SESSION['id']);
-                
-                $tweetes->salvar();
+                echo '<pre>';
+                print_r($_POST);
+                echo '</pre>';
 
             }else{
                 header('location: /?login=erro');
             }
             
+
         }
+        
+            
+        
 
     }
 ?>
