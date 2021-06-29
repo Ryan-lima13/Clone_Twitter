@@ -18,6 +18,16 @@
         }
 
         //salvar 
+        public function salvar(){
+            $query = "insert into tweets(id_usuario, tweet) values(:id_usuario, :tweet)";
+            $stmt= $this->db->prepare($query);
+            $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+            $stmt->bindValue(':tweet',$this->__get('tweet'));
+            $stmt->execute();
+
+            return $this;
+
+        }
 
         //recuperar
 
