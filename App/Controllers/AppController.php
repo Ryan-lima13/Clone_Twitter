@@ -21,8 +21,8 @@
             session_start();
             if($_SESSION['id'] != '' && $_SESSION['nome'] != ''){
                
-                $tweetes = Container::getModel('tweetes');
-                $tweetes->__set('tweetes',$_POST['tweetes']);
+                $tweetes = Container::getModel('tweete');
+                $tweetes->__set('tweetes',$_POST['tweete']);
                 $tweetes->__set('id_usuario', $_SESSION['id']);
                 
                 $tweetes->salvar();
