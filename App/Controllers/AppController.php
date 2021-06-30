@@ -57,6 +57,7 @@
             $usuarios = array();
             if($pesquisaPor != ''){
                 $usuario = Container::getModel('Usuario');
+                $usuario->__set('id',$_SESSION['id']);
                 $usuario->__set('nome',$pesquisaPor);
                 $usuarios = $usuario->getAll();
                 
