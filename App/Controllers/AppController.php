@@ -70,6 +70,9 @@
            $this->render('quemSeguir');
         }
         
+        public function acao(){
+            
+        }
             
         
 
