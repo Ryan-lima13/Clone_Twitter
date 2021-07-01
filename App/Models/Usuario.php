@@ -91,12 +91,22 @@ class Usuario extends Model {
 	}
 
 	public function seguirUsuario($id_usuario_seguindo){
-		echo 'seguir usuario';
+		$query = "insert into usuarios_seguidores(id_usuario, id_usuario_seguindo)values(:id_usuario, :id_usuario_seguindo)";
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id_usuario',$this->__get('id'));
+		$stmt->bindValue(':id_usuario_seguindo',$id_usuario_seguindo);
+		$stmt->execute();
+
+		return true;
 
 	}
 
 	public function deixarSeguirUsuario($id_usuario_seguindo){
-		echo 'deixar de seguir usuario';
+		$query = "delete from usuarios_seguidores where id_usuario = :id_usuario and id_usuario_seguindo = :id_usuario_seguindo";
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id_usuario',$this->__get('id'));
+		$stmt->bindValue(':id_usuario_seguindo',$id_usuario_seguindo);
+		$stmt->execute();
 		
 	}
 
