@@ -76,17 +76,7 @@
             echo '<pre>';
             print_r($_GET);
             echo '</pre>';
-            $acao = (isset($_GET['acao']))? $_GET['acao']:'';
-            $id_usuario_seguindo = (isset($_GET['id_usuario']))? $_GET['id_usuario']:'';
-            $usuario = Container::getModel('Usuario');
-            $usuario->set('id',$_SESSION['id']);
-            if($acao == 'seguir'){
-                $usuario->seguirUsuario($id_usuario_seguindo);
-
-            }else if($acao == 'deixar_de_seguir'){
-                $usuario->deixarSeguirUsuario($id_usuario_seguindo);
-
-            }
+           
 
 
             // id do usuario que ta seguindo
