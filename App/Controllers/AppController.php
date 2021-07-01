@@ -71,7 +71,12 @@
         }
         
         public function acao(){
+            $this->ValidarAutenticacao(); 
+            // acao 
+
+            // id do usuario que ta seguindo
             
+
         }
             
         
