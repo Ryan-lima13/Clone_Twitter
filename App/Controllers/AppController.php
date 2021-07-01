@@ -86,9 +86,11 @@
                 $usuario->deixarSeguirusuario($id_usuario_seguindo);
 
             }
+            header('location: /quem_seguir');
 
 
-            // id do usuario que ta seguindo
+            
+
 
 
         }
